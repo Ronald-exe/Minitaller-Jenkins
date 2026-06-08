@@ -34,6 +34,7 @@ pipeline {
         checkout scm
         script {
           env.GIT_COMMIT_SHORT = sh(script: 'git rev-parse --short=7 HEAD', returnStdout: true).trim()
+          env.CURRENT_BRANCH = sh(script: 'git rev-parse --abbrev-ref HEAD', returnStdout: true).trim()
         }
         stash(
           name: 'source-code',
@@ -105,7 +106,7 @@ pipeline {
       agent any
       when {
         expression {
-          env.GIT_BRANCH == 'main' || env.GIT_BRANCH == 'origin/main'
+          env.CURRENT_BRANCH == 'main'
         }
       }
       steps {
