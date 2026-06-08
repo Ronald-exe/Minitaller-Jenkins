@@ -1,5 +1,5 @@
-pipeline { 
-  agent none 
+pipeline {
+  agent none
 
   options {
     skipDefaultCheckout(true)
@@ -104,7 +104,9 @@ pipeline {
     stage('Push to Registry') {
       agent any
       when {
-        branch 'main'
+        expression {
+          env.GIT_BRANCH == 'main' || env.GIT_BRANCH == 'origin/main'
+        }
       }
       steps {
         deleteDir()
