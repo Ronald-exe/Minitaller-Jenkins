@@ -59,5 +59,6 @@ class TestTableroFacil(unittest.TestCase):
         mine_count = sum(cell == MINE for row in board for cell in row)
         self.assertEqual(mine_count, 5)  # <-- error intencional
 
+
 if __name__ == "__main__":
     unittest.main()
