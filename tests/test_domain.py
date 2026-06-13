@@ -52,6 +52,7 @@ class BoardGenerationTests(unittest.TestCase):
 
         self.assertEqual(reveal_cells(board, (0, 0), flagged={(0, 0)}), set())
 
+
 class TestTableroFacil(unittest.TestCase):
     def test_cantidad_de_minas_en_dificultad_facil(self):
         board = generate_board(8, 8, 10, (0, 0), rng=random.Random(42))
